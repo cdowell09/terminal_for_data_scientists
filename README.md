@@ -73,3 +73,9 @@ Selfishly written for me by me so I have a list of notes that I can go back to.
 - SSH (Secure Shell) for remote connections
 - CURL for downloading files and interacting with APIs
 - WGET for retrieving files using HTTP, HTTPS, and FTP
+
+## Special Topics
+- Introduction to VIM
+- Introduction to Poetry
+- Creating Python CLIs with Typer
+- Docker
