@@ -1,0 +1,220 @@
+# Lesson 12: Running Python Scripts from the Terminal
+
+As a data scientist, you'll often need to run Python scripts from the command line. This lesson will cover various ways to execute Python scripts and pass arguments to them.
+
+## Basic Execution of Python Scripts
+
+To run a Python script, use the following command:
+
+```bash
+python script_name.py
+```
+
+If you have multiple Python versions installed, you might need to specify:
+
+```bash
+python3 script_name.py
+```
+
+## Shebang Line
+
+For Unix-like systems (including macOS), you can make your script directly executable by adding a shebang line at the top of your script:
+
+```python
+#!/usr/bin/env python3
+
+print("Hello, World!")
+```
+
+Then, make the script executable:
+
+```bash
+chmod +x script_name.py
+```
+
+Now you can run it like this:
+
+```bash
+./script_name.py
+```
+
+## Running Modules
+
+To run a Python module as a script:
+
+```bash
+python -m module_name
+```
+
+This is useful for built-in modules like `http.server`:
+
+```bash
+python -m http.server 8000
+```
+
+## Passing Command-Line Arguments
+
+Python's `sys.argv` list contains the command-line arguments. The script name is always `sys.argv[0]`.
+
+Example script (`args_example.py`):
+
+```python
+import sys
+
+print(f"Script name: {sys.argv[0]}")
+print(f"Arguments: {sys.argv[1:]}")
+```
+
+Run it like this:
+
+```bash
+python args_example.py arg1 arg2 arg3
+```
+
+## Using argparse for Better Argument Handling
+
+For more complex argument parsing, use the `argparse` module:
+
+```python
+import argparse
+
+parser = argparse.ArgumentParser(description='Process some integers.')
+parser.add_argument('integers', metavar='N', type=int, nargs='+',
+                    help='an integer for the accumulator')
+parser.add_argument('--sum', dest='accumulate', action='store_const',
+                    const=sum, default=max,
+                    help='sum the integers (default: find the max)')
+
+args = parser.parse_args()
+print(args.accumulate(args.integers))
+```
+
+Run it like this:
+
+```bash
+python argparse_example.py 1 2 3 4 --sum
+```
+
+## Running Scripts in Virtual Environments
+
+If you're using a virtual environment (which you should!), activate it before running your script:
+
+```bash
+source venv/bin/activate  # For venv
+# or
+conda activate myenv      # For conda
+# or
+poetry shell              # For Poetry
+
+python script.py
+```
+
+Alternatively, you can run the script in the virtual environment without activating it:
+
+```bash
+venv/bin/python script.py  # For venv
+# or
+poetry run python script.py  # For Poetry
+```
+
+## Running Jupyter Notebooks from the Command Line
+
+To run a Jupyter notebook non-interactively:
+
+```bash
+jupyter nbconvert --to notebook --execute my_notebook.ipynb
+```
+
+## Redirecting Output
+
+Redirect stdout to a file:
+
+```bash
+python script.py > output.txt
+```
+
+Redirect both stdout and stderr:
+
+```bash
+python script.py > output.txt 2>&1
+```
+
+## Running Long Scripts
+
+For long-running scripts, you might want to use `nohup` to keep the script running even if you close the terminal:
+
+```bash
+nohup python long_script.py &
+```
+
+This will create a `nohup.out` file with the script's output.
+
+## Practice Exercise: Creating and Running a Data Processing Script
+
+1. Create a new Python script named `process_data.py`:
+
+```python
+import argparse
+import pandas as pd
+
+def process_data(input_file, output_file, operation):
+    df = pd.read_csv(input_file)
+    
+    if operation == 'mean':
+        result = df.mean()
+    elif operation == 'sum':
+        result = df.sum()
+    else:
+        raise ValueError("Unknown operation")
+    
+    result.to_csv(output_file)
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Process CSV data.')
+    parser.add_argument('input_file', help='Input CSV file')
+    parser.add_argument('output_file', help='Output CSV file')
+    parser.add_argument('--operation', choices=['mean', 'sum'], default='mean',
+                        help='Operation to perform on the data')
+    
+    args = parser.parse_args()
+    
+    process_data(args.input_file, args.output_file, args.operation)
+    print(f"Data processed. Results saved to {args.output_file}")
+```
+
+2. Create a sample CSV file named `data.csv`:
+
+```csv
+A,B,C
+1,2,3
+4,5,6
+7,8,9
+```
+
+3. Run the script:
+
+```bash
+python process_data.py data.csv output_mean.csv --operation mean
+```
+
+4. Check the output:
+
+```bash
+cat output_mean.csv
+```
+
+5. Run the script with a different operation:
+
+```bash
+python process_data.py data.csv output_sum.csv --operation sum
+```
+
+## Tips for Data Scientists
+
+- Use virtual environments to manage dependencies for different projects.
+- Leverage `argparse` for creating user-friendly command-line interfaces for your scripts.
+- For data processing scripts, consider adding progress bars (e.g., using `tqdm`) for long-running operations.
+- Use logging instead of print statements for better output control and log file generation.
+- For very large datasets, consider using libraries like `dask` or `vaex` that can handle out-of-memory computations.
+
+Remember, the ability to run scripts from the command line is crucial for automation, batch processing, and integrating your Python code with other tools and workflows.
