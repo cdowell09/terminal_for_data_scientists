@@ -38,7 +38,7 @@ if __name__ == "__main__":
 Run this script:
 
 ```bash
-python script.py hello World
+python script.py World
 ```
 
 Output:
@@ -47,6 +47,7 @@ Hello World!
 ```
 
 ## Command Groups
+Command groups in Typer allow you to organize related commands under a common namespace. They provide a way to structure your CLI application hierarchically, making it more intuitive and easier to use, especially as your application grows in complexity.
 
 Typer allows you to create command groups easily:
 
@@ -94,7 +95,12 @@ if __name__ == "__main__":
 Run it:
 
 ```bash
-python script.py John --age 25 --student
+python script2.py John --age 25 --student
+```
+
+or using the alternative argument for `age`:
+```bash
+python script2.py John -a 25 --student
 ```
 
 ## File Handling

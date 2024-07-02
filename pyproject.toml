@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "terminal-for-data-scientists"
+version = "0.1.0"
+description = ""
+authors = ["cdowell09 <cdowell09@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+typer = "^0.12.3"
+ruff = "^0.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
