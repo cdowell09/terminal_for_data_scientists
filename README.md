@@ -1,3 +1,7 @@
+# Terminal Introduction for Data Scientists
+
+Selfishly written for me by me so I have a list of notes that I can go back to.
+
 ## Lesson 1: Introduction to the Terminal
 - What is the terminal?
 - Opening Terminal on macOS
