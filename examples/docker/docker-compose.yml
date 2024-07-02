@@ -1,0 +1,14 @@
+version: '3'
+services:
+  jupyter:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/app
+    command: jupyter notebook --ip 0.0.0.0 --allow-root
+  train:
+    build: .
+    volumes:
+      - .:/app
+    command: python train_model.py
