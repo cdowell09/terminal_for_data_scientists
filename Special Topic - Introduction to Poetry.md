@@ -12,12 +12,6 @@ Install Poetry using the official installer script:
 curl -sSL https://install.python-poetry.org | python3 -
 ```
 
-Or via pip (not recommended for all systems):
-
-```bash
-pip install --user poetry
-```
-
 Verify the installation:
 
 ```bash
