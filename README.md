@@ -74,6 +74,17 @@ Selfishly written for me by me so I have a list of notes that I can go back to.
 - CURL for downloading files and interacting with APIs
 - WGET for retrieving files using HTTP, HTTPS, and FTP
 
+## Lesson 16: Advanced Bash
+- Scripting
+- Control Structures
+
+## Lesson 17: Bash Error Handling and Debugging
+
+- `set`
+- `trap`
+- Debugging
+- `shellcheck`
+
 ## Special Topics
 - Introduction to VIM
 - Introduction to Poetry
