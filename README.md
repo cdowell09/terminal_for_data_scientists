@@ -74,12 +74,16 @@ Selfishly written for me by me so I have a list of notes that I can go back to.
 - CURL for downloading files and interacting with APIs
 - WGET for retrieving files using HTTP, HTTPS, and FTP
 
-## Lesson 16: Advanced Bash
+## Lesson 16: Docker Overview
+- Docker 
+- Docker Compose
+- Makefile
+
+## Lesson 17: Advanced Bash
 - Scripting
 - Control Structures
 
-## Lesson 17: Bash Error Handling and Debugging
-
+## Lesson 18: Bash Error Handling and Debugging
 - `set`
 - `trap`
 - Debugging
@@ -89,4 +93,3 @@ Selfishly written for me by me so I have a list of notes that I can go back to.
 - Introduction to VIM
 - Introduction to Poetry
 - Creating Python CLIs with Typer
-- Docker
