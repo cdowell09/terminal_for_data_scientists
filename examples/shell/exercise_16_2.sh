@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 echo "Enter a number:"
 read number
